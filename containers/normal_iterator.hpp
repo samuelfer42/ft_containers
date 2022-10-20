@@ -7,7 +7,7 @@
 
 namespace ft
 {
-	template <typename Iterator> // generique template
+	template <typename Iterator> // template generic
 	class normal_iterator
 	{
 	protected: 

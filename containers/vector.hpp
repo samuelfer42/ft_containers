@@ -29,6 +29,7 @@ namespace ft
 		typedef std::ptrdiff_t difference_type;    // type de difference
 		typedef std::size_t size_type;			// type de taille
 
+	    // Member functions
 		// (1)constructeur de conteneur vide 
 		explicit vector(const allocator_type &alloc = allocator_type())
 			: _size(0), _capacity(0), _allocator(alloc), _data(NULL)
@@ -47,7 +48,7 @@ namespace ft
 			}
 		} // Contruit le conteneur avec n valeurs val
 
-		// (3) constructeur de conteneur en fonciton d'un range
+		// (3) constructeur de conteneur en fonciton d'un range [first, last]
 		template <typename InputIterator> 
 		vector(
 			typename ft::enable_if<!ft::is_integral<InputIterator>::value, InputIterator>::type first,
@@ -65,8 +66,9 @@ namespace ft
 			{
 				_allocator.construct(_data + _size, *first++);
 			}
-		} // range
+		}
 
+		// (4) constructeur par copie de chacun des éléments de x
 		vector(const vector &x)
 			: _size(x._size), _capacity(x._capacity), _allocator(x._allocator)
 		{
@@ -75,9 +77,9 @@ namespace ft
 			{
 				_allocator.construct(_data + i, x[i]);
 			}
-		} // copy
+		}
 
-		// destructor
+		// Destructor
 		~vector()
 		{
 			for (size_type i = 0; i < _size; ++i)
@@ -87,7 +89,8 @@ namespace ft
 			_allocator.deallocate(_data, _capacity);
 		}
 
-		// operator=
+		// operateur de copie (=)
+		//Affecte un nouveau contenu au conteneur, en remplaçant son contenu actuel et en modifiant sa taille si nécessaire.
 		vector &operator=(const vector &x)
 		{
 			if (this != &x)
@@ -108,57 +111,68 @@ namespace ft
 		}
 
 		// Iterators
+		// Retourne un iterateur pointant sur le premier élément du conteneur.
 		iterator begin()
 		{
 			return iterator(_data);
 		}
 
+		// Retourne un iterateur constant pointant sur le premier élément du conteneur.
 		const_iterator begin() const
 		{
 			return const_iterator(_data);
 		}
 
+		// Retourne un iterateur pointant sur la position juste après la dernière valeur du conteneur.
 		iterator end()
 		{
 			return iterator(_data + _size);
 		}
 
+		// Retourne un iterateur constant pointant sur la position juste après la dernière valeur du conteneur.
 		const_iterator end() const
 		{
 			return const_iterator(_data + _size);
 		}
 
+		// Retourne un reverse iterator pointant sur la dernière valeur du conteneur (c'est-à-dire son élément de fin).
 		reverse_iterator rbegin()
 		{
 			return reverse_iterator(end());
 		}
 
+		// Retourne un reverse iterator constant pointant sur la dernière valeur du conteneur (c'est-à-dire son élément de fin).
 		const_reverse_iterator rbegin() const
 		{
 			return const_reverse_iterator(end());
 		}
 
+		// Retourne un reverse iterator pointant sur la position juste avant le premier élément du conteneur.
 		reverse_iterator rend()
 		{
 			return reverse_iterator(begin());
 		}
 
+		// Retourne un reverse iterator constant pointant sur la position juste avant le premier élément du conteneur.
 		const_reverse_iterator rend() const
 		{
 			return const_reverse_iterator(begin());
 		}
 
 		// Capacity
+		// Retourne le nombre d'éléments dans le vecteur
 		size_type size() const
 		{
 			return _size;
 		}
 
+		// Retourne le nombre maximum d'éléments que peut contenir le conteneur.
 		size_type max_size() const
 		{
 			return (_allocator.max_size() < PTRDIFF_MAX) ? _allocator.max_size() : PTRDIFF_MAX;
 		}
 
+		// redimensionne le conteneur pour qu'il contienne n éléments.
 		void resize(size_type n, value_type val = value_type())
 		{
 			if (n <= _size)
@@ -179,16 +193,19 @@ namespace ft
 			_size = n;
 		}
 
+		// Retourne la taille du conteneur allouée actuellement en mémoire.
 		size_type capacity() const
 		{
 			return _capacity;
 		}
 
+		// Vérifie si le conteneur est vide.
 		bool empty() const
 		{
 			return (_size == 0);
 		}
 
+		// demande à ce que le conteneur ait une capacité suffisante pour contenir n éléments.
 		void reserve(size_type n)
 		{
 			if (n > _capacity)
@@ -211,16 +228,19 @@ namespace ft
 		}
 
 		// Element access
+		// Renvoie une référence à l'élément à la position n dans le conteneur.
 		reference operator[](size_type n)
 		{
 			return _data[n];
 		}
 
+		// Renvoie une référence constante à l'élément à la position n dans le conteneur.
 		const_reference operator[](size_type n) const
 		{
 			return _data[n];
 		}
 
+		// Retourne une référence à l'élément à la position n dans le conteneur.
 		reference at(size_type n)
 		{
 			if (n < _size)
@@ -228,6 +248,7 @@ namespace ft
 			throw std::out_of_range("vector");
 		}
 
+		// Retourne une référence constante à l'élément à la position n dans le conteneur.
 		const_reference at(size_type n) const
 		{
 			if (n < _size)
@@ -235,27 +256,32 @@ namespace ft
 			throw std::out_of_range("vector");
 		}
 
+		// Retourne une référence à l'élément situé au debut du conteneur.
 		reference front()
 		{
 			return _data[0];
 		}
 
+		// Retourne une référence constante à l'élément situé au debut du conteneur.
 		const_reference front() const
 		{
 			return _data[0];
 		}
 
+		// Retourne une référence à l'élément situé à la fin du conteneur.
 		reference back()
 		{
 			return _data[_size - 1];
 		}
 
+		// Retourne une référence constante à l'élément situé à la fin du conteneur.
 		const_reference back() const
 		{
 			return _data[_size - 1];
 		}
 
 		// Modifiers
+		// Remplacant un nouveau contenair construit depuis [first, last]
 		template <typename InputIterator>
 		void assign(
 			typename ft::enable_if<!ft::is_integral<InputIterator>::value, InputIterator>::type first,
@@ -279,6 +305,7 @@ namespace ft
 			_size = n;
 		}
 
+		// Remplacant un nouveau contenair construit depuis n éléments de val.
 		void assign(size_type n, const value_type &val)
 		{
 			this->reserve(n);
@@ -293,6 +320,7 @@ namespace ft
 			_size = n;
 		}
 
+		// Ajoute un élément à la fin du conteneur.
 		void push_back(const value_type &val)
 		{
 			if (_size + 1 > _capacity)
@@ -306,12 +334,14 @@ namespace ft
 			}
 		}
 
+		// Supprime le dernier élément du conteneur.
 		void pop_back()
 		{
 			--_size;
 			_allocator.destroy(_data + _size);
 		}
 
+		// le vecteur est etendu en inserant une nouvelle valeur avant la position indiquée.
 		iterator insert(iterator position, const value_type &val)
 		{
 			size_type i = position - this->begin();
@@ -321,6 +351,7 @@ namespace ft
 			return iterator(this->begin() + i);
 		}
 
+		// le vecteur est etendu en inserant n valeurs avant la position indiquée.
 		void insert(iterator position, size_type n, const value_type &val)
 		{
 			size_type i = position - this->begin();
@@ -336,7 +367,6 @@ namespace ft
 			}
 			_size += n;
 		}
-
 		template <typename InputIterator>
 		void insert(
 			iterator position,
@@ -362,11 +392,13 @@ namespace ft
 			_size += n;
 		}
 
+		// Supprime un élément du conteneur.
 		iterator erase(iterator position)
 		{
 			return erase(position, position + 1);
 		}
 
+		// Supprime une plage d'éléments du conteneur  [first,last]
 		iterator erase(iterator first, iterator last)
 		{
 			size_type i = 0;
@@ -385,6 +417,7 @@ namespace ft
 			return first;
 		}
 
+		// Remplace le contenu du conteneur par le contenu de x
 		void swap(vector &x)
 		{
 			if (this != &x)
@@ -396,12 +429,14 @@ namespace ft
 			}
 		}
 
+		// Supprime tous les éléments du conteneur.
 		void clear()
 		{
 			this->resize(0);
 		}
 		
 		// Allocator
+		// Retourne l'allocateur utilisé par le conteneur.
 		allocator_type get_allocator() const
 		{
 			return _allocator;
@@ -410,48 +445,54 @@ namespace ft
 	private:
 		size_type _size;	 // current size
 		size_type _capacity; // allocated size
-		allocator_type _allocator;
-		pointer _data;
+		allocator_type _allocator; //type allocator
+		pointer _data; 			// pointer to data
 	};
 
 	// Non-member function overloads
-	// relational operators
+	// Test d'égalité de deux conteneurs.
 	template <typename T, typename Alloc>
 	bool operator==(const vector<T, Alloc> &lhs, const vector<T, Alloc> &rhs)
 	{
 		return (lhs.size() == rhs.size() && ft::equal(lhs.begin(), lhs.end(), rhs.begin()));
 	}
 
+	// Test d'inégalité de deux conteneurs.
 	template <typename T, typename Alloc>
 	bool operator!=(const vector<T, Alloc> &lhs, const vector<T, Alloc> &rhs)
 	{
 		return !(lhs == rhs);
 	}
 
+	// Test si le premier conteneur est inférieur au second.
 	template <typename T, typename Alloc>
 	bool operator<(const vector<T, Alloc> &lhs, const vector<T, Alloc> &rhs)
 	{
 		return ft::lexicographical_compare(lhs.begin(), lhs.end(), rhs.begin(), rhs.end());
 	}
 
+	// Test si le premier conteneur est inférieur ou égal au second.
 	template <typename T, typename Alloc>
 	bool operator<=(const vector<T, Alloc> &lhs, const vector<T, Alloc> &rhs)
 	{
 		return !(rhs < lhs); // lhs <= rhs
 	}
 
+	// Test si le premier conteneur est supérieur au second.
 	template <typename T, typename Alloc>
 	bool operator>(const vector<T, Alloc> &lhs, const vector<T, Alloc> &rhs)
 	{
 		return (rhs < lhs);
 	}
 
+	// Test si le premier conteneur est supérieur ou égal au second.
 	template <typename T, typename Alloc>
 	bool operator>=(const vector<T, Alloc> &lhs, const vector<T, Alloc> &rhs)
 	{
 		return !(lhs < rhs); // rhs <= lhs
 	}
 
+	// Echange le contenu de deux conteneurs.
 	template <typename T, typename Alloc>
 	void swap(vector<T, Alloc> &x, vector<T, Alloc> &y)
 	{
