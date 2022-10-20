@@ -12,31 +12,32 @@
 
 namespace ft
 {
-	template <typename T, typename Alloc = std::allocator<T> >
+	template <typename T, typename Alloc = std::allocator<T> > // generic template
 	class vector
 	{
 	public:
-		typedef T value_type;
-		typedef Alloc allocator_type;
-		typedef value_type &reference;
-		typedef const value_type &const_reference;
-		typedef value_type *pointer;
-		typedef const value_type *const_pointer;
-		typedef ft::normal_iterator<pointer> iterator;
-		typedef ft::normal_iterator<const_pointer> const_iterator;
-		typedef ft::reverse_iterator<iterator> reverse_iterator;
-		typedef ft::reverse_iterator<const_iterator> const_reverse_iterator;
-		typedef std::ptrdiff_t difference_type;
-		typedef std::size_t size_type;
+		typedef T value_type;						// type de valeur, premier parametre du template
+		typedef Alloc allocator_type;				// le type d'allocateur, 2eme param du template
+		typedef value_type &reference;				// ref sur T value_type
+		typedef const value_type &const_reference; // ref sur T value_type qui est constant
+		typedef value_type *pointer;				// pointeur sur Type de valeur
+		typedef const value_type *const_pointer;	// pointeur sur Type de valeur qui est constant
+		typedef ft::normal_iterator<pointer> iterator; // iterateur Generic
+		typedef ft::normal_iterator<const_pointer> const_iterator; // iterateur Generic
+		typedef ft::reverse_iterator<iterator> reverse_iterator; //reverse iterateur
+		typedef ft::reverse_iterator<const_iterator> const_reverse_iterator; //reverse iterateur constant
+		typedef std::ptrdiff_t difference_type;    // type de difference
+		typedef std::size_t size_type;			// type de taille
 
-		// constructor
+		// (1)constructeur de conteneur vide 
 		explicit vector(const allocator_type &alloc = allocator_type())
 			: _size(0), _capacity(0), _allocator(alloc), _data(NULL)
-		{
-		} // default
+		{ 
+		}//constructeur par défaut, vide
 
-		explicit vector(size_type n, const value_type &val = value_type(),
-						const allocator_type &alloc = allocator_type())
+		// (2)constructeur de remplissage
+		explicit vector(size_type n, const value_type &val = value_type(), 
+						const allocator_type &alloc = allocator_type()) 
 			: _size(n), _capacity(n), _allocator(alloc)
 		{
 			_data = _allocator.allocate(_capacity);
@@ -44,9 +45,10 @@ namespace ft
 			{
 				_allocator.construct(_data + i, val);
 			}
-		} // fill
+		} // Contruit le conteneur avec n valeurs val
 
-		template <typename InputIterator>
+		// (3) constructeur de conteneur en fonciton d'un range
+		template <typename InputIterator> 
 		vector(
 			typename ft::enable_if<!ft::is_integral<InputIterator>::value, InputIterator>::type first,
 			InputIterator last,
