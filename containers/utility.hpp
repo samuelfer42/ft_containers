@@ -1,8 +1,8 @@
 
 #ifndef UTILITY_HPP
-#define UTILITY_HPP
+# define UTILITY_HPP
 
-#include "algorithm.hpp"
+# include "algorithm.hpp"
 
 namespace ft
 {
@@ -21,10 +21,10 @@ namespace ft
         pair()
             : first(), second()
         {
-        } 
+        }
 
 		// constructeur d'initialisation
-        template <typename U, typename V> 
+        template <typename U, typename V>
         pair(const pair<U, V> &pr)
             : first(pr.first), second(pr.second)
         {
@@ -47,7 +47,7 @@ namespace ft
     };
 
     //  Non-member function overloads
-	// operteur "==" 
+	// operteur "=="
     template <typename T1, typename T2>
     bool operator==(const pair<T1, T2> &lhs, const pair<T1, T2> &rhs)
     {

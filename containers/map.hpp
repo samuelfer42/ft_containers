@@ -1,13 +1,13 @@
 
 #ifndef MAP_HPP
-#define MAP_HPP
+# define MAP_HPP
 
-#include "utility.hpp" // ft::pair
-#include "rbtree.hpp"
-#include "rbtree_iterator.hpp"
-#include "reverse_iterator.hpp"
-#include <functional> // std::less
-#include <cstddef>	  // std::ptrdiff_t, std::size_t
+# include "utility.hpp" // ft::pair
+# include "vector.hpp"
+# include "rbtree.hpp"
+# include "rbtree_iterator.hpp"
+# include "reverse_iterator.hpp"
+# include <cstddef>	  // std::ptrdiff_t, std::size_t
 
 namespace ft
 {
@@ -30,6 +30,7 @@ namespace ft
 			  typename Compare = std::less<Key>,					  // map::key_compare
 			  typename Alloc = std::allocator<ft::pair<const Key, T> > // map::allocator_type
 			  >
+
 	class map
 	{
 	public:
@@ -174,7 +175,7 @@ namespace ft
 
 		size_type max_size() const
 		{
-			return _bst.max_size();	
+			return _bst.max_size();
 		}
 
 		// Element access

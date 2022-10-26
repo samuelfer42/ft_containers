@@ -1,16 +1,16 @@
 
 #ifndef VECTOR_ITERATOR_HPP
-#define VECTOR_ITERATOR_HPP
+# define VECTOR_ITERATOR_HPP
 
-#include "iterator_traits.hpp"
-#include <cstddef> // std::ptrdiff_t
+# include "iterator_traits.hpp"
+# include <cstddef> // std::ptrdiff_t
 
 namespace ft
 {
 	template <typename Iterator> // template generic
 	class normal_iterator
 	{
-	protected: 
+	protected:
 		Iterator _current; // notre iterateur
 		typedef typename ft::iterator_traits<Iterator> traits_type; // type trait de Iterator
 
@@ -26,19 +26,19 @@ namespace ft
 			: _current(0)
 		{
 		}
-		// initialisation 
+		// initialisation
 		explicit normal_iterator(Iterator iter)
-			: _current(iter) 
+			: _current(iter)
 		{
 		}
 
 		// copy-constructeur
 		template <typename Iter>
-		normal_iterator(const normal_iterator<Iter> &rhs) 
+		normal_iterator(const normal_iterator<Iter> &rhs)
 			: _current(rhs.base())
 		{
 		}
-		
+
 		// destructeur
 		virtual ~normal_iterator()
 		{
@@ -54,7 +54,7 @@ namespace ft
 
 
 		Iterator base() const
-		{ 
+		{
 			return _current;
 		} // retourne l'iterateur actuel
 
@@ -133,7 +133,7 @@ namespace ft
 		}
 	};
 
-	// fonction non-membre 
+	// fonction non-membre
 	// opérateur de comparaison (a == b)
 	template <typename Iterator1, typename Iterator2>
 	bool operator==(const normal_iterator<Iterator1> &lhs,
@@ -180,7 +180,7 @@ namespace ft
 					const normal_iterator<Iterator2> &rhs)
 	{
 		return !(lhs < rhs);
-	} 
+	}
 
 	// operaeteur d'addition (a + n)
 	template <typename Iterator>

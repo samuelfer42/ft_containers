@@ -1,9 +1,9 @@
 
 #ifndef RBTREE_HPP
-#define RBTREE_HPP
+# define RBTREE_HPP
 
-#include "type_traits.hpp"
-#include <functional>  // std::less
+# include "type_traits.hpp"
+# include <functional>  // std::less
 
 namespace ft
 {

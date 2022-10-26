@@ -1,9 +1,9 @@
 
 #ifndef STACK_HPP
-#define STACK_HPP
+# define STACK_HPP
 
-#include "vector.hpp"
-#include <cstddef>	 // std::size_t
+# include "vector.hpp"
+# include <cstddef>	 // std::size_t
 
 namespace ft
 {
@@ -13,13 +13,13 @@ namespace ft
 	public:
 		// Member types
 		typedef T value_type; 			  // Type de l'element
-		typedef Container container_type; // Type du conteneur 
+		typedef Container container_type; // Type du conteneur
 		typedef typename std::size_t size_type; // Type de la taille
 
 		// Member functions
 		// constructeur par defaut
-		explicit stack(const container_type &ctnr = container_type()) 
-			: _cont(ctnr) 
+		explicit stack(const container_type &ctnr = container_type())
+			: _cont(ctnr)
 		{
 		} // initialization du type de conteneur
 
@@ -40,7 +40,7 @@ namespace ft
 		{
 			return _cont.back();
 		}
-		
+
 		// Renvoie une référence constante au dernier élément du conteneur
 		const value_type& top() const
 		{
@@ -91,7 +91,7 @@ namespace ft
 		return lhs._cont < rhs._cont;
 	}
 
-	// Renvoie si le premier conteneur est plus petit ou égal au second (<=) 
+	// Renvoie si le premier conteneur est plus petit ou égal au second (<=)
 	template <typename T, typename Container>
 	bool operator<=(const stack<T, Container> &lhs, const stack<T, Container> &rhs)
 	{

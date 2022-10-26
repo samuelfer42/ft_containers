@@ -1,14 +1,14 @@
 
 #ifndef VECTOR_H
-#define VECTOR_H
+# define VECTOR_H
 
-#include "type_traits.hpp"
-#include "reverse_iterator.hpp"
-#include "normal_iterator.hpp"
-#include "algorithm.hpp"
-#include <cstddef>	 // std::ptrdiff_t
-#include <memory>	 // std::allocator
-#include <stdexcept> // std::out_of_range
+# include "type_traits.hpp"
+# include "reverse_iterator.hpp"
+# include "normal_iterator.hpp"
+# include "algorithm.hpp"
+# include <cstddef>	 // std::ptrdiff_t
+# include <memory>	 // std::allocator
+# include <stdexcept> // std::out_of_range
 
 namespace ft
 {
@@ -30,15 +30,15 @@ namespace ft
 		typedef std::size_t size_type;			// type de taille
 
 	    // Member functions
-		// (1)constructeur de conteneur vide 
+		// (1)constructeur de conteneur vide
 		explicit vector(const allocator_type &alloc = allocator_type())
 			: _size(0), _capacity(0), _allocator(alloc), _data(NULL)
-		{ 
+		{
 		}//constructeur par défaut, vide
 
 		// (2)constructeur de remplissage
-		explicit vector(size_type n, const value_type &val = value_type(), 
-						const allocator_type &alloc = allocator_type()) 
+		explicit vector(size_type n, const value_type &val = value_type(),
+						const allocator_type &alloc = allocator_type())
 			: _size(n), _capacity(n), _allocator(alloc)
 		{
 			_data = _allocator.allocate(_capacity);
@@ -49,7 +49,7 @@ namespace ft
 		} // Contruit le conteneur avec n valeurs val
 
 		// (3) constructeur de conteneur en fonciton d'un range [first, last]
-		template <typename InputIterator> 
+		template <typename InputIterator>
 		vector(
 			typename ft::enable_if<!ft::is_integral<InputIterator>::value, InputIterator>::type first,
 			InputIterator last,
@@ -434,7 +434,7 @@ namespace ft
 		{
 			this->resize(0);
 		}
-		
+
 		// Allocator
 		// Retourne l'allocateur utilisé par le conteneur.
 		allocator_type get_allocator() const

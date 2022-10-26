@@ -1,13 +1,14 @@
 
 #ifndef SET_HPP
-#define SET_HPP
+# define SET_HPP
 
-#include "utility.hpp" // ft::pair
-#include "rbtree.hpp"
-#include "rbtree_iterator.hpp"
-#include "reverse_iterator.hpp"
-#include <functional> // std::less
-#include <cstddef>	  // std::ptrdiff_t, std::size_t
+# include <memory>
+# include "utility.hpp" // ft::pair
+# include "rbtree.hpp"
+# include "rbtree_iterator.hpp"
+# include "reverse_iterator.hpp"
+# include <functional> // std::less
+# include <cstddef>	  // std::ptrdiff_t, std::size_t
 
 namespace ft
 {
@@ -156,7 +157,7 @@ namespace ft
 
 		size_type max_size() const
 		{
-			return _bst.max_size();	
+			return _bst.max_size();
 		}
 
 		// Modifiers
