@@ -10,7 +10,7 @@ namespace ft
 	template <bool Cond, typename T = void> //template generic
 	struct enable_if
 	{
-	};
+	}; // active le type T si Cond est vrai
 
 	// specialisation pour true
 	template <typename T>
@@ -24,7 +24,7 @@ namespace ft
 	struct is_integral
 	{
 		static const bool value = false;
-	};
+	}; //
 
 	// boolean — Value-type
 	template <>

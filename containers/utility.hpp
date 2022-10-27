@@ -6,7 +6,7 @@
 
 namespace ft
 {
-    template <typename T1, typename T2> // template generic
+    template <typename T1, typename T2> // template generic std::pair
     struct pair
     {
         // types:
@@ -89,7 +89,7 @@ namespace ft
         return !(lhs < rhs);
     }
 
-	// opérateur "make_pair: Pour faire une paire à partir de deux valeurs"
+	// std::make_pair: Pour faire une paire à partir de deux valeurs"
     template <typename T1, typename T2>
     pair<T1, T2> make_pair(T1 x, T2 y)
     {
