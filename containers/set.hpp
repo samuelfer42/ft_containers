@@ -34,26 +34,26 @@ namespace ft
 	{
 	public:
 		// Member types
-		typedef Key key_type; // type de la clé
-		typedef Key value_type; // type de la valeur
-		typedef Compare key_compare; // type de la fonction de comparaison des clés
-		typedef Compare value_compare; // type de la fonction de comparaison des valeurs
-		typedef Alloc allocator_type; // type de l'allocateur
-		typedef typename allocator_type::reference reference; // type de référence
-		typedef typename allocator_type::const_reference const_reference; // type de référence constante
-		typedef typename allocator_type::pointer pointer; // type de pointeur
-		typedef typename allocator_type::const_pointer const_pointer; // type de pointeur constant
-		typedef ft::rbtree_const_iterator<value_type> iterator; // type d'itérateur
-		typedef ft::rbtree_const_iterator<value_type> const_iterator; // type d'itérateur constant
-		typedef ft::reverse_iterator<iterator> reverse_iterator; // type d'itérateur réversible
-		typedef ft::reverse_iterator<const_iterator> const_reverse_iterator; // type d'itérateur réversible constant
-		typedef std::ptrdiff_t difference_type; // type de différence
-		typedef std::size_t size_type; // type de taille
+		typedef Key key_type; // clé
+		typedef Key value_type; // valeur
+		typedef Compare key_compare; // fonction de comparaison des clés
+		typedef Compare value_compare; // fonction de comparaison des valeurs
+		typedef Alloc allocator_type; // allocateur
+		typedef typename allocator_type::reference reference; // référence
+		typedef typename allocator_type::const_reference const_reference; // référence const
+		typedef typename allocator_type::pointer pointer; // pointeur
+		typedef typename allocator_type::const_pointer const_pointer; // pointeur const
+		typedef ft::rbtree_const_iterator<value_type> iterator; // itérateur
+		typedef ft::rbtree_const_iterator<value_type> const_iterator; // itérateur constant
+		typedef ft::reverse_iterator<iterator> reverse_iterator; // itérateur réversible
+		typedef ft::reverse_iterator<const_iterator> const_reverse_iterator; // itérateur réversible constant
+		typedef std::ptrdiff_t difference_type; // différence
+		typedef std::size_t size_type; // taille
 
 	protected:
 		typedef ft::rbtree<key_type, value_type, Identity<value_type>, key_compare, allocator_type> tree_type; // type de l'arbre
-		typedef typename tree_type::node_type node_type; // type de noeud
-		typedef typename tree_type::node_ptr node_ptr; // type de pointeur de noeud
+		typedef typename tree_type::node_type node_type; // noeud
+		typedef typename tree_type::node_ptr node_ptr; // pointeur de noeud
 
 	public:
 
@@ -264,7 +264,7 @@ namespace ft
 		}
 
 		// Operations
-		// retournent un itérateur sur l'élément val s'il existe dans le conteneur	
+		// retournent un itérateur sur l'élément val s'il existe dans le conteneur
 		iterator find(const key_type &k) const
 		{
 			node_ptr tmp = _bst.searchKey(k);

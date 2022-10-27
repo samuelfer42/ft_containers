@@ -16,18 +16,18 @@ namespace ft
 	class vector
 	{
 	public:
-		typedef T value_type;						// type de valeur, premier parametre du template
-		typedef Alloc allocator_type;				// le type d'allocateur, 2eme param du template
-		typedef value_type &reference;				// ref sur T value_type
-		typedef const value_type &const_reference; // ref sur T value_type qui est constant
-		typedef value_type *pointer;				// pointeur sur Type de valeur
-		typedef const value_type *const_pointer;	// pointeur sur Type de valeur qui est constant
+		typedef T value_type;						// valeur
+		typedef Alloc allocator_type;				// allocateur
+		typedef value_type &reference;				// reference
+		typedef const value_type &const_reference; // reference const
+		typedef value_type *pointer;				// pointeur sur valeur
+		typedef const value_type *const_pointer;	// pointeur sur valeur qui est const
 		typedef ft::normal_iterator<pointer> iterator; // iterateur Generic
-		typedef ft::normal_iterator<const_pointer> const_iterator; // iterateur Generic
+		typedef ft::normal_iterator<const_pointer> const_iterator; // iterateur Const
 		typedef ft::reverse_iterator<iterator> reverse_iterator; //reverse iterateur
 		typedef ft::reverse_iterator<const_iterator> const_reverse_iterator; //reverse iterateur constant
-		typedef std::ptrdiff_t difference_type;    // type de difference
-		typedef std::size_t size_type;			// type de taille
+		typedef std::ptrdiff_t difference_type;    // difference
+		typedef std::size_t size_type;			// taille
 
 	    // Member functions
 		// (1)constructeur de conteneur vide

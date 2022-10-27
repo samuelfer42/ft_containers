@@ -12,9 +12,9 @@ namespace ft
 	{
 	public:
 		// Member types
-		typedef T value_type; 			  // Type de l'element
-		typedef Container container_type; // Type du conteneur
-		typedef typename std::size_t size_type; // Type de la taille
+		typedef T value_type; 			  // l'element
+		typedef Container container_type; // conteneur
+		typedef typename std::size_t size_type; // taille
 
 		// Member functions
 		// constructeur par defaut

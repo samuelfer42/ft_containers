@@ -8,11 +8,11 @@ namespace ft
 {
 	template <typename Iterator> // template generic
 	class reverse_iterator
-		: public iterator<typename ft::iterator_traits<Iterator>::iterator_category, // type de catégorie pour l'itérateur
-						  typename ft::iterator_traits<Iterator>::value_type,		 // type de l'élément vers lequel l'itérateur peut pointer
-						  typename ft::iterator_traits<Iterator>::difference_type,  // type de difference
-						  typename ft::iterator_traits<Iterator>::pointer,          // type de pointeur vers lequel l'itérateur peut pointer
-						  typename ft::iterator_traits<Iterator>::reference> 		// type de référence renvoyé par l'itérateur
+		: public iterator<typename ft::iterator_traits<Iterator>::iterator_category, // catégorie pour l'itérateur
+						  typename ft::iterator_traits<Iterator>::value_type,		 // l'élément vers lequel l'itérateur peut pointer
+						  typename ft::iterator_traits<Iterator>::difference_type,  // difference
+						  typename ft::iterator_traits<Iterator>::pointer,          // pointeur vers lequel l'itérateur peut pointer
+						  typename ft::iterator_traits<Iterator>::reference> 		// référence renvoyé par l'itérateur
 	{
 	protected:
 		Iterator _base_iterator; // une copie de l'iterateur original
@@ -20,12 +20,12 @@ namespace ft
 
 	public:
 		// Member types
-		typedef Iterator iterator_type; // type de l'iterateur
-		typedef typename traits_type::iterator_category iterator_category; // type de catégorie pour l'itérateur
-		typedef typename traits_type::value_type value_type; // type de l'élément vers lequel l'itérateur peut pointer
-		typedef typename traits_type::difference_type difference_type; // type de difference
-		typedef typename traits_type::pointer pointer; // type de pointeur vers lequel l'itérateur peut pointer
-		typedef typename traits_type::reference reference; // type de référence renvoyé par l'itérateur
+		typedef Iterator iterator_type; // iterateur
+		typedef typename traits_type::iterator_category iterator_category; // catégorie pour l'itérateur
+		typedef typename traits_type::value_type value_type; // élément vers lequel l'itérateur peut pointer
+		typedef typename traits_type::difference_type difference_type; // difference
+		typedef typename traits_type::pointer pointer; // pointeur vers lequel l'itérateur peut pointer
+		typedef typename traits_type::reference reference; // référence renvoyé par l'itérateur
 
 		// Member functions
 		// (1) constructeur par defaut

@@ -12,14 +12,14 @@ namespace ft
 	{
 	protected:
 		Iterator _current; // notre iterateur
-		typedef typename ft::iterator_traits<Iterator> traits_type; // type trait de Iterator
+		typedef typename ft::iterator_traits<Iterator> traits_type; // trait de Iterator
 
 	public:
-		typedef typename traits_type::difference_type difference_type; // type de difference
-		typedef typename traits_type::value_type value_type; // type de l'élément vers lequel l'itérateur peut pointer
-		typedef typename traits_type::pointer pointer; // type de pointeur vers lequel l'itérateur peut pointer
-		typedef typename traits_type::reference reference; // type de référence renvoyé par l'itérateur
-		typedef typename traits_type::iterator_category iterator_category; // type de catégorie pour l'itérateur
+		typedef typename traits_type::difference_type difference_type; // difference
+		typedef typename traits_type::value_type value_type; // élément vers lequel l'itérateur peut pointer
+		typedef typename traits_type::pointer pointer; // pointeur vers lequel l'itérateur peut pointer
+		typedef typename traits_type::reference reference; // référence renvoyé par l'itérateur
+		typedef typename traits_type::iterator_category iterator_category; // catégorie pour l'itérateur
 
 		// constructeur par defaut
 		normal_iterator()
