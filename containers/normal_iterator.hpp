@@ -186,10 +186,10 @@ namespace ft
 	template <typename Iterator>
 	normal_iterator<Iterator> operator+(
 		typename normal_iterator<Iterator>::difference_type n,
-		const normal_iterator<Iterator> &it) 
+		const normal_iterator<Iterator> &it)
 	{
-		return normal_iterator<Iterator>(it.base() + n); 
-	} 
+		return normal_iterator<Iterator>(it.base() + n);
+	}
 
 	// opérateur de difference (b - a)
 	template <typename Iterator1, typename Iterator2>
