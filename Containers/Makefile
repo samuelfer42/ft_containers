@@ -4,7 +4,12 @@ OBJS		=	${SRCS:.cpp=.o}
 .cpp.o:
 				$(CCPP) $(CPPFLAGS) -o $@ -c $<
 
-SRCS			=	main.cpp
+SRCS			=	Test/main.cpp \
+					Test/map.cpp \
+					Test/vector.cpp \
+					Test/stack.cpp \
+
+
 
 
 CCPP			=	clang++
