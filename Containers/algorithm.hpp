@@ -4,7 +4,7 @@
 
 namespace ft
 {
-	//swap (echanger les valeurs de a et de b)
+	//swap (echanger les pointeur de a et de b)
     template <typename T>
     void swap(T &a, T &b)
     {
