@@ -9,6 +9,7 @@
 # include <cstddef>	 // std::ptrdiff_t
 # include <memory>	 // std::allocator
 # include <stdexcept> // std::out_of_range
+# include <stdint.h>
 
 namespace ft
 {

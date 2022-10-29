@@ -3,6 +3,7 @@
 # define RBTREE_HPP
 
 # include "type_traits.hpp"
+#include <stdint.h>
 # include <functional>  // std::less
 
 namespace ft
